@@ -1,0 +1,806 @@
+Delivered-To: sebrd06@gmail.com
+Received: by 2002:a05:7413:2309:b0:14d:e27b:e052 with SMTP id vd9csp7304893rdb;
+        Tue, 8 Apr 2025 09:46:26 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFMa34LSg/r0MN+JJ2zJsw1iLj/45Xe5rF5NZSNVnwDz4bV7WxBiReTePURRmuquwntmlKK
+X-Received: by 2002:a05:6a21:399:b0:1f5:8f65:a6e4 with SMTP id adf61e73a8af0-20107eb0810mr25868967637.7.1744130785683;
+        Tue, 08 Apr 2025 09:46:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744130785; cv=none;
+        d=google.com; s=arc-20240605;
+        b=NFEddjipCa/P0u2Kq1jkIAnpCX/zg7zTM/aPF6EMdvLqlQc6vvie+xtY0J/QpZO9Te
+         iMIt5JLPcCltKZxziNpJE110LfSNQWAGPyDPfyA1yUL3+T+P9wQqdOPCru1QjAPadsry
+         Ztba51VH4fIfNYdkNKW53cj7WwExpVRoCkgIay5TZwSf0pxRHVLHMvBqGP95EHQOGpEp
+         joPVebNc9HFW9LKRJwEXePta6zxSkS/VroRHNZSaj/Wls3HpD4v+2DYmFwhbNdLm/OA2
+         8BWmfQM+wmJMGOGkeaoB8qp2ihM2qet2MG5LjK4moz/DmlQ9WikpIl2+Lrh74vgnj6Du
+         QVWw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:message-id:reply-to:mime-version:list-unsubscribe-post
+         :list-unsubscribe:date:subject:to:from:dkim-signature:dkim-signature;
+        bh=a91Ao+jo9Ff6ixVVMxBkWSIOegzFoax0IMsu0qb/9x0=;
+        fh=QfegyK63C2ZAeOxG/gMnEj3m1uiaxxqSnZQDfPIa0v8=;
+        b=Y3TAwiMReaTUIfHqtcYe8RKRLp3PNKN97loart7Ypa57+uLjF9JkPBhoUotvs6nNoY
+         a+Xzz91e3snTOed+Gru9MIFCbYKjOS+0feniB1saM4NR6soHEvIrAAPB91iLfvtol1sj
+         sSqKa5mkLMt8XvHEXluX5e24LUT7PMrQetxoEKtkqukxer/QZcgat+2f7IaX/fo+AWyh
+         2L1sa/fMf02Bzl/UCZszGviznw42TGmbIguCXqSxJkt6QNXrxvOmh2MmzdghiewjG18g
+         m5FnvRSH97/6Mdpz4PdVJUIG5matdlwtaTOujTEn9MkLSlaHJ1MwkBUgJ7wRn2pttGas
+         j2Dg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.ktronix.com header.s=12dkim1 header.b=N8xdELWW;
+       dkim=pass header.i=@s12.y.mc.salesforce.com header.s=fbldkim12 header.b=AhiLBdaR;
+       spf=pass (google.com: domain of bounce-195_html-27756289-126261-534007203-9061@bounce.email.ktronix.com designates 13.110.217.90 as permitted sender) smtp.mailfrom=bounce-195_HTML-27756289-126261-534007203-9061@bounce.email.ktronix.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=email.ktronix.com
+Return-Path: <bounce-195_HTML-27756289-126261-534007203-9061@bounce.email.ktronix.com>
+Received: from mta.email.ktronix.com (mta.email.ktronix.com. [13.110.217.90])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-af9bc3fc185si14307474a12.276.2025.04.08.09.46.24
+        for <sebrd06@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 08 Apr 2025 09:46:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce-195_html-27756289-126261-534007203-9061@bounce.email.ktronix.com designates 13.110.217.90 as permitted sender) client-ip=13.110.217.90;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.ktronix.com header.s=12dkim1 header.b=N8xdELWW;
+       dkim=pass header.i=@s12.y.mc.salesforce.com header.s=fbldkim12 header.b=AhiLBdaR;
+       spf=pass (google.com: domain of bounce-195_html-27756289-126261-534007203-9061@bounce.email.ktronix.com designates 13.110.217.90 as permitted sender) smtp.mailfrom=bounce-195_HTML-27756289-126261-534007203-9061@bounce.email.ktronix.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=email.ktronix.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=12dkim1; d=email.ktronix.com; h=From:To:Subject:Date:List-Unsubscribe:List-Unsubscribe-Post:MIME-Version: Reply-To:Message-ID:Content-Type; i=boletin@email.ktronix.com; bh=a91Ao+jo9Ff6ixVVMxBkWSIOegzFoax0IMsu0qb/9x0=; b=N8xdELWWIlhHuvKOj4f3vLI6+EhRLJIGTjBN6zqX0VozxVOlkNZU2cz+9GdPjTd8w356lHHJqyXJ
+   UdW+bRectlrPQ49GgfAOjRbOwNEynwx3KAenGQJZ5/vYIJ621OAaeus8hRoEZ6C+IjRSab4zy0Pa
+   WYDOZ0uztW5gCl5MHJruAnCk15AWnswsv8RHj/Zrkj11nwy2ELkn71D3qercPX5j3JG88ilJ1XbR
+   5BW40a+iawppv+P4ei469wFb1J5HOaOwp4TfWK3nltfDHIGPXEgxOVrZ/Hhro79R3tqk3qQpE+Sd
+   H03UL3ax328NxsfLOHA3CSmcKE1/oe+P2WlrhQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=fbldkim12; d=s12.y.mc.salesforce.com; h=From:To:Subject:Date:List-Unsubscribe:MIME-Version:Reply-To:Message-ID: Content-Type; bh=a91Ao+jo9Ff6ixVVMxBkWSIOegzFoax0IMsu0qb/9x0=; b=AhiLBdaRj6swY4P3YyA5t68dGp1x6LYviJ01HHZV8LSIZAVe1rCPCmEqTTWRAI9u6eNlYHHhLFYk
+   JsBOC6TYKwR64h+GUjrjNfZ0wsKl/jkOaq0HR/3PQ9TlPUAFl8t2Hnocx3x6vM+jaISrm2305MAY
+   q+/jcS81uk5ydnPhLPhxBsl/DTCk27VdSzp4Qq2OWvVw2cbCKDd5PmVHADrKDjW5wq7nPHk2Mx53
+   AfKoEHINiUbC4yoLIB0Au1gj+6HCNm48yKWOGQaRBeQI41gBLQh4nEBpM0xTDeVJ0tlBBUGiJ4RV
+   orIgP/pFYBmbXkRA9xbjJS8KmrpvbzMzKmV3uQ==
+Received: by mta.email.ktronix.com id hul9e22fmd4d for <sebrd06@gmail.com>; Tue, 8 Apr 2025 15:27:25 +0000 (envelope-from <bounce-195_HTML-27756289-126261-534007203-9061@bounce.email.ktronix.com>)
+From: Ktronix <boletin@email.ktronix.com>
+To: <sebrd06@gmail.com>
+Subject: ¡Tecnología a precios de locura en Ktronix! 🧨
+Date: Tue, 08 Apr 2025 09:27:24 -0600
+List-Unsubscribe: <https://click.email.ktronix.com/subscription_center.aspx?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtaWQiOiI1MzQwMDcyMDMiLCJzIjoiMjc3NTYyODkiLCJsaWQiOiIxOTUiLCJqIjoiMTI2MjYxIiwiamIiOiI5MDYxIiwiZCI6IjEyMDAyMSJ9._btcwJ3GD_eNzCRxjtRjCe8X8VV3Y4yKdgO4tCoKS9I>, <mailto:leave-fd4c1579700b5c392848-fe5116777261027f7d1d-fecd15727366027c-fe3711737164047a771473-ff2f1d707365@leave.email.ktronix.com>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+MIME-Version: 1.0
+Reply-To: Ktronix <boletin@email.ktronix.com>
+X-SFMC-Stack: 12
+x-job: 534007203_126261
+Message-ID: <bounce-195_HTML-27756289-126261-534007203-9061@bounce.email.ktronix.com>
+X-Return-Path: bounce-195_HTML-27756289-126261-534007203-9061@bounce.email.ktronix.com
+Feedback-ID: 534007203:126261:13.110.217.90:sfmktgcld
+Content-Type: multipart/alternative; boundary="eXyeOhtPN8ki=_?:"
+
+--eXyeOhtPN8ki=_?:
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+
+  
+ 
+
+ 
+https://click.email.ktronix.com/?qs=f50bc92e2c73500825a645e980f1f866821fc2efe10308413d87dc0321f476d662e73eb60279657f00b24abef4f147ba159062702361a2e1adb30f9b449c1654 
+
+
+https://click.email.ktronix.com/?qs=4705c1824f8931a3ef012635efe78d359538ed1b7be0e4b7e6b4234a554b477a3ca136479e72ccb4d10f3a312f1a6abec6d64a76b757249239a5705a64cf2610 
+Celulares 
+https://click.email.ktronix.com/?qs=4705c1824f8931a33e8481c217af4971011a54686052b416e270a9d6f2af4955e73fc889df134bd35694d6486abc27ce5ee612ad4e70eb1a4a673a26ee5df7b6 
+Electrodomésticos 
+https://click.email.ktronix.com/?qs=4705c1824f8931a3bae8333b8fd1d93bf10684163a3d5383c4e6f118435f2f8a72c53eff5a64709f898fd2d7c008a29fd930cb989ca714739f7c2165d585ac85 
+Casa inteligente 
+https://click.email.ktronix.com/?qs=4705c1824f8931a3518564209281a29f67aafbc3742234bc85036450cfa7a89086c20a1ad7c27cf10100e7910f11d4882aa0cf134b1a563d49642eb52cede4ae 
+Audio 
+
+
+https://click.email.ktronix.com/?qs=4705c1824f8931a3c6e6f0d6d73f97ef6dec51ddec607b520355f3d62a6349d318ed30a50d3c21922f3e309985fa650b2aef441c8cdedb8ee092f0b1f8221156 
+
+
+https://click.email.ktronix.com/?qs=4705c1824f8931a3e0f2f742a381e365e460cca1b5e897bcebe77edf463fc189ab32ed596dc3e09a9cf6d9f00e0764d72041563ef9738c3dcd362e51ae8f32b0 
+
+
+https://click.email.ktronix.com/?qs=4705c1824f8931a35f962711dc53d0176e4640e04bb20ee3bdd5c767ea640cc16fb72123961e3a60f9cf6903839aaee32f987e122ac4b044ee6af8bd8b3b9adb 
+
+https://click.email.ktronix.com/?qs=4705c1824f8931a31066abee6d16070c6279d8d6ebd2da78a7f17198e1de07878af36bb99c30bf1ab7275c94213b3af7d2c7ceb7a68b893a138a47fc2a70cdad 
+
+
+https://click.email.ktronix.com/?qs=4705c1824f8931a3bab19cb7efd5b5337cad0833d3a837f067d14d34244a5d1a9834c3b58b0523c7911d6d27910f86455e9b67c48a82d1fc49cc81e059e6f591 
+
+
+https://click.email.ktronix.com/?qs=4705c1824f8931a3230785b737c2adcf96c810b620bbc687ec0b3bd5cc84015a4655836d29711379fde718a96c93969af5282d885c0ced368e65ad078969083d 
+
+Texto y GIF
+¡Paga fácil y seguro!
+
+https://click.email.ktronix.com/?qs=4705c1824f8931a3f12b0c993a7c09a49adfdeb321c6d8288fe4bdef086a546ed0f181d6c2ca67200e9bc5cb379d80ffebc5527b5d04ac3874dca86b833815e3 
+
+
+https://click.email.ktronix.com/?qs=4705c1824f8931a31cec4300535d067e9e86b1a2e02ff2c21327d0d6bda43b4e6a0ff39b2c62f02329f8c0e93511ce79255a382cf56c7fdfccdd6bbe1664c34b 
+
+https://click.email.ktronix.com/?qs=4705c1824f8931a3350bf7a3d4ac4552199b0261e20503097d1b94a4509375b3e9082a3eb0e57cc456a5d90936b912af30514f4f7f97de34c177d08626d4d132 
+
+
+https://click.email.ktronix.com/?qs=4705c1824f8931a32aa1c737b662f5d431e5835f5a1c7d09e5973201e3e6e7807fe8e428000d2ceaf11d801faf97e4240363d4d7e048cf3ddc631e577f60319e 
+
+
+https://click.email.ktronix.com/?qs=4705c1824f8931a3e45dea05510ec3b8e4d2d3bceb1869764fea90c42a4b2ab193c39946955cf92cce05f1ce2bcb8e97ceab8bed33bcbd206db3370d3e17928a 
+
+https://click.email.ktronix.com/?qs=4705c1824f8931a3e1040fefc1f97c13c9c6fbc3e6a2607d706be8585952d5a12cf9e352cafd9eaab9f0f35409aeb9bfb96d12f02e768f539fb74ed7f3649686 
+
+
+https://click.email.ktronix.com/?qs=4705c1824f8931a33c333460e18d134045f8c4a3b72d88be794fd451c65fd6a59f18f1b98235170e8277a979b0680465cfa6ecb7b0a3e2ad5c32fa104ce9f024 
+
+
+https://click.email.ktronix.com/?qs=4705c1824f8931a35e9d3fd260fe36e75a7477cb7a746f226fda7c94b00da30f311a2c4ab5f9777121ff2188a391bef23e50c23156bf4e369ef2b6e6759e877c 
+
+https://click.email.ktronix.com/?qs=4705c1824f8931a36d60960fbabd2e919a80f9da963577424719706ac07958157ec9fa0e2f27205de11a088dd7a1ac786e679e699bc114b7aff763a2cc9af377 
+
+
+https://click.email.ktronix.com/?qs=4705c1824f8931a3d65183502c71e55e1587240ca5ee38eba29b74ceb3d8beda0c3b5087f6542bd2df1d3bfbc6dc9662bf9c5fc0f1454aac1caf8342bdd5f9bf 
+
+
+ En Ktronix tienes: 
+https://click.email.ktronix.com/?qs=4705c1824f8931a3de31c7b2350f1039a8d09605701383fd01ab9573f131121aa4cb89f7eec0990069f73c1a24508224d2f1ed0b80cff753dd776f47753dabeb 
+
+https://click.email.ktronix.com/?qs=4705c1824f8931a39c21beedad32895404b8dd50e53b637d108c681fe8586f21b212fed1e513adbc35c2891af54e226a5d10498dff48da72fcacfc182260e0f1 
+
+https://click.email.ktronix.com/?qs=4705c1824f8931a3543a793f2a546803ee53df1e952ef681fcacaf2a1df8e782579c4ee6bcae4c7784128185637a54c79f40a95bec6baff31d190c1890c57a18 
+
+https://click.email.ktronix.com/?qs=4705c1824f8931a3d4a05884b6981cb4e7d43fb9d6d3947de21831945da78f386325bd7a0da9d345dd070930c732b35dd02da12c67244a955ed3067e31873768 
+
+https://click.email.ktronix.com/?qs=4705c1824f8931a3881180931a3e945b0610506c608bf7428b0ae43197fee05a45c0255657b5f7445050140acc4cf440adbacba7e95696274d3c98674453523f 
+
+
+tel:018000180222 
+
+https://click.email.ktronix.com/?qs=4705c1824f8931a3c100bd50884abe7da72a19bc0773fb66afe26d25c446e575069d7f0136b05cad19ab175b9e70023749fdf0d36428f6533f5f69872d81c404 
+
+
+¿Quieres dejar de recibir información promocional de Ktronix? 
+
+https://click.email.ktronix.com/unsub_center.aspx?qs=1ed347c1f393b1932a4cfa376e5ee9aaeb2b12bcc18e13a5cc8db0eaa548b04a8fcba57af637cb45821189edf95eb61ba1398c8a0ef3608407fb2195a9e8a3fdaf40441af74a3090 
+Cancela tu suscripción 
+
+
+ Si no visualizas correctamente este e-mail, ingresa a la 
+https://view.email.ktronix.com/?qs=a276cc15fb58d1c441d6eec4d25f8fef376860fd477ca4b58b903264ff3546a7ff5304da130559cd744e52ad34c27e5cf5c5e31b6d54ec55577a873bbd6d1f1d8fa12c203eef7df03c1554b6b2111020 
+versión web 
+
+ 
+ Si tienes alguna solicitud o pregunta sobre el tratamiento de tus datos personales comunícate con 
+mailto:datos.personales@corbeta.com.co 
+datos.personales@corbeta.com.co 
+
+ o solicita el 
+https://click.email.ktronix.com/?qs=4705c1824f8931a33403d021327c99e4533e3612248c604018292ee6ad14a8fc7289bdfafe2a49776c95a15148a319f782a88b5815fbf5a7133bc431c9700f15 
+tratamiento de tus datos personales 
+
+
+ This email was sent by: 
+ Ktronix
+
+ Ak 68 # 72-43, Bogotá, D.C., 110841 Colombia
+https://click.email.ktronix.com/profile_center.aspx?qs=1ed347c1f393b193ca6e8c4ec883edc922d5d157a61ac4d3375e798b3e0fecb438c69609dcbcdb18eee15af298c13b7b4a2170ad133362b3442c83fff501cdb3e91a42ff746b9c15 
+Update Profile 
+
+
+ 
+ 
+
+
+  
+ 
+
+
+--eXyeOhtPN8ki=_?:
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style type="text/css">
+      ReadMsgBody{ width: 100%;}
+      .ExternalClass {width: 100%;}
+      .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;}
+      body {-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;margin:0 !important;}
+      p { margin: 1em 0;}
+      table td { border-collapse: collapse;}
+      img {outline:0;}
+      a img {border:none;}
+      @-ms-viewport{ width: device-width;}
+    </style>
+    <style type="text/css">
+      @media only screen and (max-width: 480px) {
+        .container {width: 100% !important;}
+        .footer { width:auto !important; margin-left:0; }
+        .mobile-hidden { display:none !important; }
+        .logo { display:block !important; padding:0 !important; }
+        img { max-width:100% !important; height:auto !important; max-height:auto !important;}
+        .header img{max-width:100% !important;height:auto !important; max-height:auto !important;}
+        .photo img { width:100% !important; max-width:100% !important; height:auto !important;}
+        .drop { display:block !important; width: 100% !important; float:left; clear:both;}
+        .footerlogo { display:block !important; width: 100% !important; padding-top:15px; float:left; clear:both;}
+        .nav4, .nav5, .nav6 { display: none !important; }
+        .tableBlock {width:100% !important;}
+        .responsive-td {width:100% !important; display:block !important; padding:0 !important; }
+        .fluid, .fluid-centered {
+          width: 100% !important;
+          max-width: 100% !important;
+          height: auto !important;
+          margin-left: auto !important;
+          margin-right: auto !important;
+        }
+        .fluid-centered {
+          margin-left: auto !important;
+          margin-right: auto !important;
+        }
+        /* MOBILE GLOBAL STYLES - DO NOT CHANGE */
+        body { padding: 0px !important; font-size: 16px !important; line-height: 150% !important;}
+        h1 { font-size: 22px !important; line-height: normal !important;}
+        h2 { font-size: 20px !important; line-height: normal !important;}
+        h3 { font-size: 18px !important; line-height: normal !important;}
+        .buttonstyles {
+          font-family:arial,helvetica,sans-serif !important;
+          font-size: 16px !important;
+          color: #FFFFFF !important;
+          padding: 10px !important;
+        }
+        /* END OF MOBILE GLOBAL STYLES - DO NOT CHANGE */
+      }
+      @media only screen and (max-width: 640px) {
+        .container { width:100% !important; }
+        .mobile-hidden { display:none !important; }
+        .logo { display:block !important; padding:0 !important; }
+        .photo img { width:100% !important; height:auto !important;}
+        .nav5, .nav6 { display: none !important;}
+        .fluid, .fluid-centered {
+          width: 100% !important;
+          max-width: 100% !important;
+          height: auto !important;
+          margin-left: auto !important;
+          margin-right: auto !important;
+        }
+        .fluid-centered {
+          margin-left: auto !important;
+          margin-right: auto !important;
+        }
+      }
+    </style>
+    <!--[if mso]>       <style type="text/css">           /* Begin Outlook Font Fix */           body, table, td {               font-family: Arial, Helvetica, sans-serif ;               font-size:16px;               color:#000000;               line-height:1;           }           /* End Outlook Font Fix */       </style>     <![endif]-->
+  </head>
+  <body bgcolor="#ffffff" text="#000000" style="background-color: #ffffff; color: #000000; padding: 0px; -webkit-text-size-adjust:none; font-size: 16px; font-family:arial,helvetica,sans-serif;"><style type="text/css">
+div.preheader 
+{ display: none !important; } 
+</style>
+<div class="preheader" style="font-size: 1px; display: none !important;">La locura de precios ya empezó… y tú no te lo puedes perder.</div>
+    <div style="font-size:0; line-height:0;"><img src="https://click.email.ktronix.com/open.aspx?ffcb10-fecd15727366027c-fe5211737c62017b7c16-fe3711737164047a771473-ff60157970-fe5116777261027f7d1d-ff2f1d707365&d=120021&bmt=0" width="1" height="1" alt=""></div>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+      <tr>
+        <td align="center" valign="top">
+           
+        </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <table cellspacing="0" cellpadding="0" border="0" width="600" class="container" align="center">
+            <tr>
+              <td>
+                <table class="tb_properties border_style" style="background-color:#FFFFFF;" cellspacing="0" cellpadding="0" bgcolor="#ffffff" width="100%">
+                  <tr>
+                    <td align="center" valign="top">
+                      <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                          <!-- added padding here -->
+                          <td class="content_padding" style="">
+                            <!-- end of comment -->
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                              <tr> <!-- top slot -->
+                                <td align="center" class="header" valign="top">
+                                  <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tbody>
+                                        <tr>
+                                          <td align="left" valign="top">
+                                            <table cellspacing="0" cellpadding="0" style="width:100%">
+                                              <tbody>
+                                              <tr>
+                                                <td class="responsive-td" valign="top" style="width: 100%;">
+                                                  <!----><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><div align="center" style="margin-left: auto; margin-right: auto;">
+  <table id="Table_01" border="0" cellpadding="0" cellspacing="0">
+    
+      <tr>
+        <td>
+          <table align="center" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" width="100%" id="backgroundTable">
+            
+              <tr>
+                <td align="center" width="100%" valign="top" class="wrap">
+                  <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" id="newsTable" style="width: 600px;">
+                    
+                      <tr style="height: auto;">
+                        <td align="center" valign="top" style="height: auto; width: 600px;" class="wrap">
+                          <center>
+                            <div id="container" style="padding: 0px;">
+                              <div align="center" style="z-index: 999;">
+                                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: 0 auto; height: 80px; width: 100%;">
+                                
+                                  
+                                    <tr bgcolor="#FFFFFF" style="background: #ffffff;" width="600">
+                                      <td align="center" width="600" valign="middle" style="border-bottom: 3px solid #014690;">
+                                        <a href="https://click.email.ktronix.com/?qs=f50bc92e2c735008264c2f61b81370f9e5f642e41a5fe33bbce84daab7fa07af8aca4b9ac1c6659610d662cde6eefb36553cd1b3e3d33d1087ec404a61fba1b6" data-sap-hpa-ceimo-link-id="202211241544374" data-sap-hpa-ceimo-link-outboundid="X" data-sap-hpa-ceimo-link-utm="X" data-sap-hpa-ceimo-link-trackable="X"><img src="https://media.aws.alkomprar.com/ymarketingcolcomercio/Ktronix/email-marketing/generales/logo-mail_kt.png" border="0" alt="Ir a Ktronix" style="margin: 2%;width: 30%;" data-sap-hpa-ceimo-image-id="15996905106751004" data-sap-hpa-ceimo-image="SMOImage" data-sap-hpa-ceimo-image-type="Static"></a>
+                                      </td>
+                                    </tr>
+                                  
+                                </table>
+                              </div>
+                            </div>
+                          </center>
+                        </td>
+                      </tr>
+                    
+                  </table>
+                </td>
+              </tr>
+            
+          </table>
+        </td>
+      </tr>
+    
+  </table>
+</div></td></tr></table><!----><!----><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #2B73B9; text-align: center;">
+    <tr>
+        <td style="padding: 0px; font-size: 14px;">
+            <a href="https://click.email.ktronix.com/?qs=f50bc92e2c7350086c762537161e3f30b4912f594a670f84aaf62e37ef4402c178d46918bb6a09c6e86af8b429992d526b083dba72dae3e3c1d6c929d205a406" style="color: white; text-decoration: none; padding: 10px 20px; display: inline-block;">Celulares</a>
+            <a href="https://click.email.ktronix.com/?qs=f50bc92e2c735008e0cd64ac825057d327cbc6e1612b6c7ae4a1cfcadabb076520f763e408df658ea32084da492067713c29674e883a3c0eda5c74e619482540" style="color: white; text-decoration: none; padding: 10px 20px; display: inline-block;">Electrodomésticos</a>
+            <a href="https://click.email.ktronix.com/?qs=f50bc92e2c7350085e29bc8ab1bc29f82cb87b07bf65b36e1b8fbf39c3f4d939572601fef70e0c4245eea05434d9b8312f39df8001f14f059bfd17a41e052e8b" style="color: white; text-decoration: none; padding: 10px 20px; display: inline-block;">Casa inteligente</a>
+            <a href="https://click.email.ktronix.com/?qs=f50bc92e2c73500852e940e1e01b6fa073ce053a584823bb27f430aac0e7eeb37c1936f00b38fbde730213e1acae4ffe9dd08589be7e83a0293e6cd682ffdb30" style="color: white; text-decoration: none; padding: 10px 20px; display: inline-block;">Audio</a>
+        </td>
+    </tr>
+</table></td></tr></table><!----><!----><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table width="100%" cellspacing="0" cellpadding="0" role="presentation"><tr><td align="center"><a href="https://click.email.ktronix.com/?qs=f50bc92e2c73500817cb48eb4c48233f55816a235eb2d1c857a731974f6c3c8735f9bc633e0c79df649772ed672261ad6e75bce33c07c6e2e83e43bb576da009" title="ofertas"   data-linkto="https://"><img src="https://media.aws.alkomprar.com/ymarketingcolcomercio/Ktronix/email-marketing/2025/abril/Email-ofertas-locura-080425/KT-HEADER.jpg" alt="" width="600" style="display: block; padding: 0px; text-align: center; height: auto; width: 100%; border: 0px;"></a></td></tr></table></td></tr></table><!----><!---->
+<table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table width="100%" cellspacing="0" cellpadding="0" role="presentation"><tr><td align="center"><a href="https://click.email.ktronix.com/?qs=f50bc92e2c7350081bbf4f006c3c72b2e4bfb9eebb31b4b9867c7f37ee482c1504719549c69f70d4b11a8bf37b0ec138f2e74a6ced982996820689b115376f5f" title="fx507zc4"   data-linkto="https://"><img src="https://media.aws.alkomprar.com/ymarketingcolcomercio/Ktronix/email-marketing/2025/abril/Email-ofertas-locura-080425/MAIL-OFERTASMIL-1.jpg" alt="" width="600" style="display: block; padding: 0px; text-align: center; height: auto; width: 100%; border: 0px;"></a></td></tr></table></td></tr></table><!----><!----><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr>
+<td class="stylingblock-content-wrapper camarker-inner"><div align="center" style="margin-right: auto;">
+    <table id="Table_01" border="0" cellpadding="0" cellspacing="0">
+
+        <tr><td>
+            <table align="center" border="0" cellpadding="0" cellspacing="0" bgcolor="#F5F5F5" max-width="600px" id="backgroundTable">
+
+                <tr>
+                    <td align="center" width="600px" valign="top" class="wrap">
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="600px" id="newsTable" style="width: 600px;">
+
+                            <tr style="height: auto;">
+                                <td align="center" valign="top" style="height: auto; width: 600px;" class="wrap">
+                                    <center>
+                                        <div id="container" style="padding: 0px;">
+                                            <div align="center" style="z-index: 999;">
+                                                <table cellpadding="0" cellspacing="0" border="0" width="600px">
+
+                                                    <tr>
+                                                        <td width="325px"><a rel="noopener noreferrer" href="https://click.email.ktronix.com/?qs=f50bc92e2c7350083e4e1b2663238ee3b32983ba16d7c56d366b84012e8fbaf75ec6aca11c658ec937185c37b942110070f1b72dcd02cfc20d817300612bdeef" target="_blank" title="OPPO A20" data-sap-hpa-ceimo-link-type="Static" data-sap-hpa-ceimo-link-outboundid=" " data-sap-hpa-ceimo-link-utm="          " data-sap-hpa-ceimo-link-trackable=" " data-sap-hpa-ceimo-link-id="2022072119020717" data-sap-hpa-ceimo-ioi-link="OPPO A20">
+                                                                <img class="g-img" src="https://media.aws.alkomprar.com/ymarketingcolcomercio/Ktronix/email-marketing/2025/abril/Email-ofertas-locura-080425/MAIL-OFERTASMIL-2.jpg" border="0" alt="OPPO A20" title="OPPO A20" width="300" style="width: 300px; max-width: 300px; height: auto; font-family: sans-serif; font-size: 15px;         line-height: 15px; ; margin: auto; display: block; opacity: 1;" data-sap-hpa-ceimo-image-id="16165151269501291" data-sap-hpa-ceimo-image="SMOImage" data-sap-hpa-ceimo-image-type="Static"></a>
+                                                        </td>
+
+
+
+                                                        <td width="325px"><a rel="noopener noreferrer" target="_blank" href="https://click.email.ktronix.com/?qs=f50bc92e2c735008e38b8ce57dd1b9f58b83cb9f68968a174f6c345d2e099b89ebea72378b28b86b78587cce7b22cf19e4926732e61bd4e06749f75ec89175c4" title="Samsung A06" data-sap-hpa-ceimo-link-type="Static" data-sap-hpa-ceimo-link-outboundid=" " data-sap-hpa-ceimo-link-utm=" " data-sap-hpa-ceimo-link-trackable="         " data-sap-hpa-ceimo-link-id="2022072119020718" data-sap-hpa-ceimo-ioi-link="Samsung A06">
+<img class="g-img" src="https://media.aws.alkomprar.com/ymarketingcolcomercio/Ktronix/email-marketing/2025/abril/Email-ofertas-locura-080425/MAIL-OFERTASMIL-3.jpg" border="0" alt="Samsung A06" title="Samsung A06" width="300" style="width: 300px; max-width: 300px; height: auto; font-family: sans-serif;          font-size: 15px; line-height: 15px; ; margin: auto; display: block; opacity: 1;" data-sap-hpa-ceimo-image-id="16225625611011166" data-sap-hpa-ceimo-image="SMOImage" data-sap-hpa-ceimo-image-type="Static"></a>
+                                                        </td>
+                                                    </tr>
+
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </center>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </td>
+                </tr>
+
+            </table>
+        </td>
+
+</tr></table></div></td></tr></table><!----><!----><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table width="100%" cellspacing="0" cellpadding="0" role="presentation"><tr><td align="center"><a href="https://click.email.ktronix.com/?qs=f50bc92e2c73500882e0e48f37697e0666bbfa7270fb7194beb53dab9d657476676ed75054710256d12c47eb2895384fae9bdbde508bcee4264a00b9406a1668" title="MACBOOK"   data-linkto="https://"><img src="https://media.aws.alkomprar.com/ymarketingcolcomercio/Ktronix/email-marketing/2025/abril/Email-ofertas-locura-080425/MAIL-OFERTASMIL-4.jpg" alt="" width="600" style="display: block; padding: 0px; text-align: center; height: auto; width: 100%; border: 0px;"></a></td></tr></table></td></tr></table><!----><!---->
+<table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table width="100%" cellspacing="0" cellpadding="0" role="presentation"><tr><td align="center"><a href="https://click.email.ktronix.com/?qs=f50bc92e2c735008fc14f5346567dc19d9042a9259f9f4090d37734583566ba1503e5057fe35f28963681fc7bdb8f2fe9e09efa508d5336d65c2639914365cf2" title="Celular SAMSUNG"   data-linkto="https://"><img src="https://media.aws.alkomprar.com/ymarketingcolcomercio/Ktronix/email-marketing/2025/abril/Email-ofertas-locura-080425/MAIL-OFERTASMIL-5.jpg" alt="" width="600" style="display: block; padding: 0px; text-align: center; height: auto; width: 100%; border: 0px;"></a></td></tr></table></td></tr></table><!----><!----><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr>
+<td class="stylingblock-content-wrapper camarker-inner"><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Texto y GIF</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px;
+    }
+
+    .text {
+        width: 50%;
+        font-size: 20px;
+        color: #2A4A80;
+        text-align: center; 
+      
+    }
+
+    .gif {
+        width: 55%;
+        text-align: right;
+    }
+
+    .gif img {
+        max-width: 100%;
+        height: auto;
+    }
+</style>
+
+
+<div class="container">
+    <div class="text">
+        <p>¡Paga fácil y seguro!</p>
+    </div>
+    <div class="gif"> <a href="https://click.email.ktronix.com/?qs=f50bc92e2c735008b3c65aa048b0da03c003baf6a7ba3750bb8909a581da4b43450dd29af88b1ca3ec5d2015116b91317a0d84a1dbf42b047012375e1ea7e1ca"> 
+        <img src="https://media.aws.alkomprar.com/ymarketingcolcomercio/Alkosto/email-marketing/2025/MEDIOS-PAGO.gif" alt="Medios de pago"></a>
+    </div>
+</div></td></tr></table><!----><!----><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><div align="center" style="margin-right: auto;">
+    <table id="Table_01" border="0" cellpadding="0" cellspacing="0">
+
+        <tr><td>
+            <table align="center" border="0" cellpadding="0" cellspacing="0" bgcolor="#F5F5F5" max-width="600px" id="backgroundTable">
+
+                <tr>
+                    <td align="center" width="600px" valign="top" class="wrap">
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="600px" id="newsTable" style="width: 600px;">
+
+                            <tr style="height: auto;">
+                                <td align="center" valign="top" style="height: auto; width: 600px;" class="wrap">
+                                    <center>
+                                        <div id="container" style="padding: 0px;">
+                                            <div align="center" style="z-index: 999;">
+                                                <table cellpadding="0" cellspacing="0" border="0" width="600px">
+
+                                                    <tr>
+                                                        <td width="325px"><a rel="noopener noreferrer" href="https://click.email.ktronix.com/?qs=f50bc92e2c73500826b6bc012f3b546be32726193bdcdd7916f1a86b53095624fb25913e0254e9513c64908ded9b10f074e52a88c9c6e7de0ad496d127d34f3e" target="_blank" title="OPPO A20" data-sap-hpa-ceimo-link-type="Static" data-sap-hpa-ceimo-link-outboundid=" " data-sap-hpa-ceimo-link-utm="          " data-sap-hpa-ceimo-link-trackable=" " data-sap-hpa-ceimo-link-id="2022072119020717" data-sap-hpa-ceimo-ioi-link="OPPO A20">
+                                                                <img class="g-img" src="https://media.aws.alkomprar.com/ymarketingcolcomercio/Ktronix/email-marketing/2025/abril/Email-ofertas-locura-080425/MAIL-OFERTASMIL-6.jpg" border="0" alt="OPPO A20" title="OPPO A20" width="300" style="width: 300px; max-width: 300px; height: auto; font-family: sans-serif; font-size: 15px;         line-height: 15px; ; margin: auto; display: block; opacity: 1;" data-sap-hpa-ceimo-image-id="16165151269501291" data-sap-hpa-ceimo-image="SMOImage" data-sap-hpa-ceimo-image-type="Static"></a>
+                                                        </td>
+
+
+
+                                                        <td width="325px"><a rel="noopener noreferrer" target="_blank" href="https://click.email.ktronix.com/?qs=f50bc92e2c735008b344621c7c96b51fd61b0f2c26a878212f594e9d1cb598b73e4626ce4ff6fe0da534bd9b80db8959e96a013e2b4ad268b1f420531a28cd83" title="P655 4KUHD" data-sap-hpa-ceimo-link-type="Static" data-sap-hpa-ceimo-link-outboundid=" " data-sap-hpa-ceimo-link-utm=" " data-sap-hpa-ceimo-link-trackable="         " data-sap-hpa-ceimo-link-id="2022072119020718" data-sap-hpa-ceimo-ioi-link="P655 4KUHD">
+<img class="g-img" src="https://media.aws.alkomprar.com/ymarketingcolcomercio/Ktronix/email-marketing/2025/abril/Email-ofertas-locura-080425/MAIL-OFERTASMIL-7.jpg" border="0" alt="P655 4KUHD" title="P655 4KUHD" width="300" style="width: 300px; max-width: 300px; height: auto; font-family: sans-serif;          font-size: 15px; line-height: 15px; ; margin: auto; display: block; opacity: 1;" data-sap-hpa-ceimo-image-id="16225625611011166" data-sap-hpa-ceimo-image="SMOImage" data-sap-hpa-ceimo-image-type="Static"></a>
+                                                        </td>
+                                                    </tr>
+
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </center>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </td>
+                </tr>
+
+            </table>
+        </td>
+
+</tr></table></div></td></tr></table><!----><!----><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table width="100%" cellspacing="0" cellpadding="0" role="presentation"><tr><td align="center"><a href="https://click.email.ktronix.com/?qs=f50bc92e2c73500881859b62dd5ee77b68840b0b6555eb83d05d1af84f7498d626231511eade65a90ea3f6e16d5a0765285a37acedc46cb83e008c5d7e11d430" title="parlante sonos"   data-linkto="https://"><img src="https://media.aws.alkomprar.com/ymarketingcolcomercio/Ktronix/email-marketing/2025/abril/Email-ofertas-locura-080425/MAIL-OFERTASMIL-8.jpg" alt="" width="600" style="display: block; padding: 0px; text-align: center; height: auto; width: 100%; border: 0px;"></a></td></tr></table></td></tr></table><!----><!---->
+<table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><div align="center" style="margin-right: auto;">
+    <table id="Table_01" border="0" cellpadding="0" cellspacing="0">
+
+        <tr><td>
+            <table align="center" border="0" cellpadding="0" cellspacing="0" bgcolor="#F5F5F5" max-width="600px" id="backgroundTable">
+
+                <tr>
+                    <td align="center" width="600px" valign="top" class="wrap">
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="600px" id="newsTable" style="width: 600px;">
+
+                            <tr style="height: auto;">
+                                <td align="center" valign="top" style="height: auto; width: 600px;" class="wrap">
+                                    <center>
+                                        <div id="container" style="padding: 0px;">
+                                            <div align="center" style="z-index: 999;">
+                                                <table cellpadding="0" cellspacing="0" border="0" width="600px">
+
+                                                    <tr>
+                                                        <td width="325px"><a rel="noopener noreferrer" href="https://click.email.ktronix.com/?qs=f50bc92e2c7350084511de725c7ece77c822a31cc476cf489148f033e470d506cd0a0031f9bcdfc208d0374b45d0e79d7fd706f7238cd8b01b4df37b417ca451" target="_blank" title="OPPO A20" data-sap-hpa-ceimo-link-type="Static" data-sap-hpa-ceimo-link-outboundid=" " data-sap-hpa-ceimo-link-utm="          " data-sap-hpa-ceimo-link-trackable=" " data-sap-hpa-ceimo-link-id="2022072119020717" data-sap-hpa-ceimo-ioi-link="OPPO A20">
+                                                                <img class="g-img" src="https://media.aws.alkomprar.com/ymarketingcolcomercio/Ktronix/email-marketing/2025/abril/Email-ofertas-locura-080425/MAIL-OFERTASMIL-9.jpg" border="0" alt="OPPO A20" title="OPPO A20" width="300" style="width: 300px; max-width: 300px; height: auto; font-family: sans-serif; font-size: 15px;         line-height: 15px; ; margin: auto; display: block; opacity: 1;" data-sap-hpa-ceimo-image-id="16165151269501291" data-sap-hpa-ceimo-image="SMOImage" data-sap-hpa-ceimo-image-type="Static"></a>
+                                                        </td>
+
+
+
+                                                        <td width="325px"><a rel="noopener noreferrer" target="_blank" href="https://click.email.ktronix.com/?qs=f50bc92e2c735008322187e1fceeab3ea261b02ffb12c6c7a62416f3cb8a78b8ac1f25ba06f2c33198571038fc0e7aec6384226e580f8054fdf5cd0eddce79e5" title="KSM150PSVB" data-sap-hpa-ceimo-link-type="Static" data-sap-hpa-ceimo-link-outboundid=" " data-sap-hpa-ceimo-link-utm=" " data-sap-hpa-ceimo-link-trackable="         " data-sap-hpa-ceimo-link-id="2022072119020718" data-sap-hpa-ceimo-ioi-link="KSM150PSVB">
+<img class="g-img" src="https://media.aws.alkomprar.com/ymarketingcolcomercio/Ktronix/email-marketing/2025/abril/Email-ofertas-locura-080425/MAIL-OFERTASMIL-10.jpg" border="0" alt="KSM150PSVB" title="KSM150PSVB" width="300" style="width: 300px; max-width: 300px; height: auto; font-family: sans-serif;          font-size: 15px; line-height: 15px; ; margin: auto; display: block; opacity: 1;" data-sap-hpa-ceimo-image-id="16225625611011166" data-sap-hpa-ceimo-image="SMOImage" data-sap-hpa-ceimo-image-type="Static"></a>
+                                                        </td>
+                                                    </tr>
+
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </center>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </td>
+                </tr>
+
+            </table>
+        </td>
+
+</tr></table></div></td></tr></table><!----><!----><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table width="100%" cellspacing="0" cellpadding="0" role="presentation"><tr><td align="center"><a href="https://click.email.ktronix.com/?qs=f50bc92e2c73500861d316b7520cadc8495de678547898bbbedcdfbadefdac7050e29a965cd0bb8ed07412875a7a0f0cbeea4c03612fb68837716f7d18094094" title="TABLET"   data-linkto="https://"><img src="https://media.aws.alkomprar.com/ymarketingcolcomercio/Ktronix/email-marketing/2025/abril/Email-ofertas-locura-080425/MAIL-OFERTASMIL-11.jpg" alt="" width="600" style="display: block; padding: 0px; text-align: center; height: auto; width: 100%; border: 0px;"></a></td></tr></table></td></tr></table><!----><!---->
+<table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><div align="center" style="margin-right: auto;">
+    <table id="Table_01" border="0" cellpadding="0" cellspacing="0">
+
+        <tr><td>
+            <table align="center" border="0" cellpadding="0" cellspacing="0" bgcolor="#F5F5F5" max-width="600px" id="backgroundTable">
+
+                <tr>
+                    <td align="center" width="600px" valign="top" class="wrap">
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="600px" id="newsTable" style="width: 600px;">
+
+                            <tr style="height: auto;">
+                                <td align="center" valign="top" style="height: auto; width: 600px;" class="wrap">
+                                    <center>
+                                        <div id="container" style="padding: 0px;">
+                                            <div align="center" style="z-index: 999;">
+                                                <table cellpadding="0" cellspacing="0" border="0" width="600px">
+
+                                                    <tr>
+                                                        <td width="325px"><a rel="noopener noreferrer" href="https://click.email.ktronix.com/?qs=f50bc92e2c7350085a6516f9d910df859564b5325c6de1ac22d4b82ae87601384968726e831427d7bfbb7024966ea27ee95e2c9f9904d8dd9bc4f7ca8add3a10" target="_blank" title="OPPO A20" data-sap-hpa-ceimo-link-type="Static" data-sap-hpa-ceimo-link-outboundid=" " data-sap-hpa-ceimo-link-utm="          " data-sap-hpa-ceimo-link-trackable=" " data-sap-hpa-ceimo-link-id="2022072119020717" data-sap-hpa-ceimo-ioi-link="OPPO A20">
+                                                                <img class="g-img" src="https://media.aws.alkomprar.com/ymarketingcolcomercio/Ktronix/email-marketing/2025/abril/Email-ofertas-locura-080425/MAIL-OFERTASMIL-12.jpg" border="0" alt="OPPO A20" title="OPPO A20" width="300" style="width: 300px; max-width: 300px; height: auto; font-family: sans-serif; font-size: 15px;         line-height: 15px; ; margin: auto; display: block; opacity: 1;" data-sap-hpa-ceimo-image-id="16165151269501291" data-sap-hpa-ceimo-image="SMOImage" data-sap-hpa-ceimo-image-type="Static"></a>
+                                                        </td>
+
+
+
+                                                        <td width="325px"><a rel="noopener noreferrer" target="_blank" href="https://click.email.ktronix.com/?qs=f50bc92e2c7350089e3435cd85360958dcc90671b1e9e016f43897d7f3c0f68f2f214cc884ce9eec84af5ea06e596b9f50290dda7923327f65aa79c6858a58f9" title="Consola PS5" data-sap-hpa-ceimo-link-type="Static" data-sap-hpa-ceimo-link-outboundid=" " data-sap-hpa-ceimo-link-utm=" " data-sap-hpa-ceimo-link-trackable="         " data-sap-hpa-ceimo-link-id="2022072119020718" data-sap-hpa-ceimo-ioi-link="Consola PS5">
+<img class="g-img" src="https://media.aws.alkomprar.com/ymarketingcolcomercio/Ktronix/email-marketing/2025/abril/Email-ofertas-locura-080425/MAIL-OFERTASMIL-13.jpg" border="0" alt="Consola PS5" title="Consola PS5" width="300" style="width: 300px; max-width: 300px; height: auto; font-family: sans-serif;          font-size: 15px; line-height: 15px; ; margin: auto; display: block; opacity: 1;" data-sap-hpa-ceimo-image-id="16225625611011166" data-sap-hpa-ceimo-image="SMOImage" data-sap-hpa-ceimo-image-type="Static"></a>
+                                                        </td>
+                                                    </tr>
+
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </center>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </td>
+                </tr>
+
+            </table>
+        </td>
+
+</tr></table></div></td></tr></table><!----><!----><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table width="100%" cellspacing="0" cellpadding="0" role="presentation"><tr><td align="center"><a href="https://click.email.ktronix.com/?qs=f50bc92e2c73500857bff0df231bab251a853b105c469792e35508106242327eda8c7228bbb00eee958254497541f270f736b74b049ba0edc4fda58d0097fe79" title="samsung galaxy"   data-linkto="https://"><img src="https://media.aws.alkomprar.com/ymarketingcolcomercio/Ktronix/email-marketing/2025/abril/Email-ofertas-locura-080425/MAIL-OFERTASMIL-14.jpg" alt="" width="600" style="display: block; padding: 0px; text-align: center; height: auto; width: 100%; border: 0px;"></a></td></tr></table></td></tr></table><!----><!---->
+<table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner">
+
+
+
+<div style="text-align: center;  background: #F5F5F5">
+ <span style="font-size:24px;"><span style="font-family:Arial,Helvetica,sans-serif;"><span style="color:#FF0000;"><b> <br> En Ktronix tienes:&nbsp;</b></span></span></span></div>
+
+
+
+<div align="center" style="margin-right: auto;">
+<table id="Table_01" border="0" cellpadding="0" cellspacing="0">
+
+<tr>
+<td>
+<table align="center" border="0" cellpadding="0" cellspacing="0" bgcolor="#F5F5F5" width="600px" id="backgroundTable">
+
+<tr>
+<td align="center" width="600px" valign="top" class="wrap">
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="600px" id="newsTable" style="width: 600px;">
+
+<tr style="height: auto;">
+<td align="center" valign="top" style="height: auto; width: 600px;" class="wrap"><center>
+<div id="container" style="padding: 0px;">
+<div align="center" style="z-index: 999;">
+<table cellpadding="0" cellspacing="0" border="0" width="600px">
+<!-- IMG -->
+<tr>
+<td width="120PX"><a rel="noopener noreferrer" href="https://click.email.ktronix.com/?qs=f50bc92e2c735008c13e48176b7c5c440beabb87c56becfec620c305cc5133d7b68cb40219b3bc7f4a1ed226e7bebfb8f9260bd8c4eae30c349d82af38792204" target="_blank" title="Entrega hoy" data-sap-hpa-ceimo-link-type="Static" data-sap-hpa-ceimo-link-outboundid="X" data-sap-hpa-ceimo-link-utm="X" data-sap-hpa-ceimo-link-trackable="X" data-sap-hpa-ceimo-link-id="2023013115072512">
+<img class="g-img" src="https://media.aws.alkomprar.com/ymarketingcolcomercio/Alkosto/email-marketing/2023/Octubre/email-beneficios-101023/KT-BEN-10.png" border="0" alt="Entrega hoy" title="Entrega hoy" width="120PX" style="width: 120PX; max-width: 120PX; height: auto; font-family: sans-serif; font-size: 15px; line-height: 15px; ; margin: auto; display: block; opacity: 1;" data-sap-hpa-ceimo-image-id="16165151269501291" data-sap-hpa-ceimo-image="SMOImage" data-sap-hpa-ceimo-image-type="Static"></a></td>
+    
+    
+<td width="120PX"><a rel="noopener noreferrer" href="https://click.email.ktronix.com/?qs=f50bc92e2c7350083af490e3ff0dfb0a31775f0a243345946f36129852f85b65841783ab8dded92e870771e0eabad45619f537fadd57f62715369462a2ebaefd" target="_blank" title="Envío gratis" data-sap-hpa-ceimo-link-type="Static" data-sap-hpa-ceimo-link-outboundid="X" data-sap-hpa-ceimo-link-utm="X" data-sap-hpa-ceimo-link-trackable="X" data-sap-hpa-ceimo-link-id="2023013115072515" data-sap-hpa-ceimo-ioi-link="Envío gratis">
+<img class="g-img" src="https://media.aws.alkomprar.com/ymarketingcolcomercio/Alkosto/email-marketing/2023/Octubre/email-beneficios-101023/KT-BEN_11.png" border="0" alt="Gana 50" title="Envío gratis" width="120PX" style="width: 120PX; max-width: 120PX; height: auto; font-family: sans-serif; font-size: 15px; line-height: 15px; ; margin: auto; display: block; opacity: 1;" data-sap-hpa-ceimo-image-id="16225625611011166" data-sap-hpa-ceimo-image="SMOImage" data-sap-hpa-ceimo-image-type="Static"></a></td>
+    
+    
+<td width="120PX"><a rel="noopener noreferrer" href="https://click.email.ktronix.com/?qs=f50bc92e2c7350089c5dd0688fa54e81ce63084ad29df03c129f27f39e87e89bc8707eacfb36e44ad82001ee55a446096ff39a2861167ab2f87b920109922aa3" target="_blank" title="recoge en tienda" data-sap-hpa-ceimo-link-type="Static" data-sap-hpa-ceimo-link-outboundid="X" data-sap-hpa-ceimo-link-utm="X" data-sap-hpa-ceimo-link-trackable="X" data-sap-hpa-ceimo-link-id="2023013115072514" data-sap-hpa-ceimo-ioi-link="ENVIO_GRATIS">
+<img class="g-img" src="https://media.aws.alkomprar.com/ymarketingcolcomercio/Alkosto/email-marketing/2023/Octubre/email-beneficios-101023/KT-BEN-12.png" border="0" alt="Llantas sportiva" title="recoge en tienda" width="120PX" style="width: 120PX; max-width: 120PX; height: auto; font-family: sans-serif; font-size: 15px; line-height: 15px; ; margin: auto; display: block; opacity: 1;" data-sap-hpa-ceimo-image-id="16225625611011166" data-sap-hpa-ceimo-image="SMOImage" data-sap-hpa-ceimo-image-type="Static"></a></td>
+    
+    
+
+    
+    
+    <td width="120PX"><a rel="noopener noreferrer" href="https://click.email.ktronix.com/?qs=f50bc92e2c7350086d953df6a292c0aff69c63b9ea1f75be582dc900dd96451da409c8fc8de87a0b9b6c56914925bb369a489ce9702e7d35f3678ea37352647d" target="_blank" title="Gana 50" data-sap-hpa-ceimo-link-type="Static" data-sap-hpa-ceimo-link-outboundid="X" data-sap-hpa-ceimo-link-utm="X" data-sap-hpa-ceimo-link-trackable="X" data-sap-hpa-ceimo-link-id="2023013115072513">
+<img class="g-img" src="https://media.aws.alkomprar.com/ymarketingcolcomercio/Alkosto/email-marketing/2023/Octubre/email-beneficios-101023/KT-BEN-13.png" border="0" alt="Gana 50" title="Gana 50" width="120PX" style="width: 120PX; max-width: 120PX; height: auto; font-family: sans-serif; font-size: 15px; line-height: 15px; ; margin: auto; display: block; opacity: 1;" data-sap-hpa-ceimo-image-id="16225625611011166" data-sap-hpa-ceimo-image="SMOImage" data-sap-hpa-ceimo-image-type="Static"></a></td>
+    
+    
+    
+       
+    <td width="120PX"><a rel="noopener noreferrer" href="https://click.email.ktronix.com/?qs=f50bc92e2c73500828d8ed223825d69d00e6d78da59953bf1700dd86db15701e621b126f2920c2346fc0bf9f7740db90240d5cdc40dc5ed3f3f1e1c858ef578f" target="_blank" title="Gana 50" data-sap-hpa-ceimo-link-type="Static" data-sap-hpa-ceimo-link-outboundid="X" data-sap-hpa-ceimo-link-utm="X" data-sap-hpa-ceimo-link-trackable="X" data-sap-hpa-ceimo-link-id="2023013115072513">
+<img class="g-img" src="https://media.aws.alkomprar.com/ymarketingcolcomercio/Alkosto/email-marketing/2023/Octubre/email-beneficios-101023/KT-BEN-14.png" border="0" alt="Gana 50" title="Gana 50" width="120PX" style="width: 120PX; max-width: 120PX; height: auto; font-family: sans-serif; font-size: 15px; line-height: 15px; ; margin: auto; display: block; opacity: 1;" data-sap-hpa-ceimo-image-id="16225625611011166" data-sap-hpa-ceimo-image="SMOImage" data-sap-hpa-ceimo-image-type="Static"></a></td>
+    
+    
+    
+    
+</tr>
+<!-- IMG: FIN -->
+</table>
+</div>
+</div>
+</center></td>
+</tr>
+
+</table>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+
+</table>
+</div>
+
+<div align="center" style="margin-right: auto;">
+<table id="Table_01" border="0" cellpadding="0" cellspacing="0">
+
+<tr>
+<td>
+<table align="center" border="0" cellpadding="0" cellspacing="0" bgcolor="#F5F5F5" width="600px" id="backgroundTable">
+
+<tr>
+<td align="center" width="600px" valign="top" class="wrap">
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="600px" id="newsTable" style="width: 600px;">
+
+<tr style="height: auto;">
+<td align="center" valign="top" style="height: auto; width: 600px;" class="wrap"><center>
+<div id="container" style="padding: 0px;">
+<div align="center" style="z-index: 999;">
+</div></div></center></td></tr></table></td></tr></table></td></tr></table></div>
+
+</td></tr></table><!----><!----><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><div align="center" style="margin-right: auto;">
+    <table id="Table_01" border="0" cellpadding="0" cellspacing="0">
+
+        <tr>
+            <td>
+                <table align="center" border="0" cellpadding="0" cellspacing="0" bgcolor="#F5F5F5" max-width="600px" id="backgroundTable">
+
+                    <tr>
+                        <td align="center" width="600px" valign="top" class="wrap">
+                            <table align="center" border="0" cellpadding="0" cellspacing="0" width="600px" id="newsTable" style="width: 600px;">
+
+                                <tr style="height: auto;">
+                                    <td align="center" valign="top" style="height: auto; width: 600px;" class="wrap">
+                                        <center>
+                                            <div id="container" style="padding: 0px;">
+                                                <div align="center" style="z-index: 999;">
+                                                    <table cellpadding="0" cellspacing="0" border="0" width="100%">
+
+                                                        <tr>
+                                                            <td width="50%"><a rel="noopener noreferrer" href="tel:018000180222" target="_blank" title="Línea gratuita nacional, celular o Fijo:018000 180 222" data-sap-hpa-ceimo-link-type="Static" data-sap-hpa-ceimo-link-outboundid=" " data-sap-hpa-ceimo-link-utm=" " data-sap-hpa-ceimo-link-trackable=" " data-sap-hpa-ceimo-link-id="2022072119020717" data-sap-hpa-ceimo-ioi-link="RECOGE_TIENDA">
+<img class="g-img" src="https://media.aws.alkomprar.com/ymarketingcolcomercio/Alkosto/email-marketing/2023/Octubre/email-beneficios-101023/KT-BENEFICIOS-1.png" border="0" alt="Línea gratuita nacional, celular o Fijo:018000 180 222" title="Línea gratuita nacional, celular o Fijo:018000 180 222" width="300" style="width: 300px; max-width: 300px; height: auto; font-family: sans-serif; font-size: 15px; line-height: 15px; ; margin: auto; display: block; opacity: 1;" data-sap-hpa-ceimo-image-id="16165151269501291" data-sap-hpa-ceimo-image="SMOImage" data-sap-hpa-ceimo-image-type="Static"></a></td>
+                                                            <td width="50%"><a rel="noopener noreferrer" href="https://click.email.ktronix.com/?qs=f50bc92e2c735008ae9b82bd081086a650545b3e12d2283103758de26c8be48c130853f31836d2328021fbfdf0e95a1d8f6b442d9ca1d628aa1f8a25fc615d97" target="_blank" title="chat en linea" data-sap-hpa-ceimo-link-type="Static" data-sap-hpa-ceimo-link-outboundid=" " data-sap-hpa-ceimo-link-utm=" " data-sap-hpa-ceimo-link-trackable=" " data-sap-hpa-ceimo-link-id="2022072119020718" data-sap-hpa-ceimo-ioi-link="Venta">
+<img class="g-img" src="https://media.aws.alkomprar.com/ymarketingcolcomercio/Alkosto/email-marketing/2023/Octubre/email-beneficios-101023/KT-BENEFICIOS-2.png" border="0" alt="chat en linea" title="chat en linea" width="300" style="width: 300px; max-width: 300px; height: auto; font-family: sans-serif; font-size: 15px; line-height: 15px; ; margin: auto; display: block; opacity: 1;" data-sap-hpa-ceimo-image-id="16225625611011166" data-sap-hpa-ceimo-image="SMOImage" data-sap-hpa-ceimo-image-type="Static"></a></td>
+
+
+
+                                                        </tr>
+
+
+
+
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </center>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+
+                </table>
+            </td>
+        </tr>
+
+    </table>
+</div></td></tr></table><!----><!----><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><div align="center" style="margin-left: auto; margin-right: auto;">
+  <table id="Table_01" border="0" cellpadding="0" cellspacing="0">
+    
+      <tr>
+        <td>
+          <table align="center" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" width="100%" id="backgroundTable">
+            
+              <tr>
+                <td align="center" width="100%" valign="top" class="wrap">
+                  <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" id="newsTable" style="width: 600px;">
+                    
+                      <tr style="height: auto;">
+                        <td align="center" valign="top" style="height: auto; width: 600px;" class="wrap">
+                          <center>
+                            <div id="container" style="padding: 0px;">
+                              <div align="center" style="z-index: 999;">
+                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                  
+                                  
+                                    <tr>
+                                      <td style="background: #F5F5F5; padding: 10px 20px;">
+                                        <p style="line-height: 22px; text-align: center; color: #444444; font-size: 15px; font-family: Arial, Helvetica, sans-serif; text-decoration: none;"><span style="font-size: 13pt;"><strong>¿Quieres dejar de recibir información promocional de Ktronix?</strong>&nbsp;<br>
+                                        <a rel="noopener noreferrer" href="https://click.email.ktronix.com/unsub_center.aspx?qs=1ed347c1f393b1932a4cfa376e5ee9aaeb2b12bcc18e13a5cc8db0eaa548b04a8fcba57af637cb45821189edf95eb61ba1398c8a0ef36084b06bb2e308f6a19ef38eb07d351cf038" target="_blank" title="Cancela tu suscripción" style="color: #003780; text-decoration: none;" data-sap-hpa-ceimo-link-type="EasyUnsubscribe" data-sap-hpa-ceimo-link-outboundid="X" data-sap-hpa-ceimo-link-utm="X" data-sap-hpa-ceimo-link-trackable="X" data-sap-hpa-ceimo-link-id="2022112415443739">Cancela tu suscripción</a></span><br>
+                                       <br>
+                                        Si no visualizas correctamente este e-mail, ingresa a la <a rel="noopener noreferrer" href="https://view.email.ktronix.com/?qs=a276cc15fb58d1c441d6eec4d25f8fef376860fd477ca4b58b903264ff3546a7ff5304da130559cd744e52ad34c27e5cf5c5e31b6d54ec55577a873bbd6d1f1de00a308d9214b4db26b080cdda108f6f" target="_blank" title="versión web" style="color: #003780; text-decoration: none;" data-sap-hpa-ceimo-link-type="ShowInBrowser" data-sap-hpa-ceimo-link-id="1628170388643969">versión web</a><br>
+                                       
+                                        Si tienes alguna solicitud o pregunta sobre el tratamiento de tus datos personales comunícate con <a rel="noopener noreferrer" href="mailto:datos.personales@corbeta.com.co" target="_blank" title="datos.personales@corbeta.com.co" style="color: #003780; text-decoration: none;" data-sap-hpa-ceimo-link-id="1628170459914981" data-sap-hpa-ceimo-link-outboundid="" data-sap-hpa-ceimo-link-utm="" data-sap-hpa-ceimo-link-trackable="" data-sap-hpa-ceimo-link-type="Static">datos.personales@corbeta.com.co</a><br>
+                                        o solicita el <a rel="noopener noreferrer" href="https://click.email.ktronix.com/?qs=f50bc92e2c735008aa206a95aaf4c721b4dcdf11025c582981b230cdf1486dc687360c4ea6374b27c04c592095f7c0e61a12ca62a2d67f728c67f449b7b1b819" target="_blank" title="https://forms.office.com/r/L4FHb1iA1M" style="color: #003780; text-decoration: none;" data-sap-hpa-ceimo-link-id="1599659978925884" data-sap-hpa-ceimo-link-outboundid="" data-sap-hpa-ceimo-link-utm="" data-sap-hpa-ceimo-link-trackable="" data-sap-hpa-ceimo-link-type="Static">tratamiento de tus datos personales</a></p>
+                                        <p align="center" style="font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 11px; color: #444444; padding:0px 0px 25px 0px; display: none;">
+                                This email was sent by: 
+                                <span>Ktronix<br>
+                                Ak 68 # 72-43, Bogotá, D.C., 110841 Colombia</span>
+                                <a href="https://click.email.ktronix.com/profile_center.aspx?qs=1ed347c1f393b193ca6e8c4ec883edc922d5d157a61ac4d3375e798b3e0fecb438c69609dcbcdb18eee15af298c13b7b4a2170ad133362b3082eb2b27da7cabe856a50b472022e32"  target="_blank" style="font-size:12px; color: #444444; text-decoration: none; font-weight:bold; display: none;">Update Profile</a>
+                            </p>                                                                             
+                                      </td>
+                                    </tr>
+                                  
+                                </table>
+                              </div>
+                            </div>
+                          </center>
+                        </td>
+                      </tr>
+                    
+                  </table>
+                </td>
+              </tr>
+            
+          </table>
+        </td>
+      </tr>
+    
+  </table>
+</div></td></tr></table><!---->
+												  
+                                                </td>
+                                              </tr>
+                                              </tbody>
+                                            </table>
+                                          </td>
+                                        </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top">
+           
+        </td>
+      </tr>
+    </table>
+  
+<!--
+X-Return-Path: bounce-195_HTML-27756289-126261-534007203-9061@bounce.email.ktronix.com
+-->
+</body>
+</html>
+
+--eXyeOhtPN8ki=_?:--
